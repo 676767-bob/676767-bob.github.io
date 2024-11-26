@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my feeling and sharing</title>
+    <style>
+        /* CSS部分 */
+
+        .card {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 50px 24px;
+            gap: 8px;
+            background: #b8d6ec;
+            box-shadow: #4779af 0px 18px 36px -18px;
+            border-radius: 12px;
+            font: 400 14px '';
+            color: #535062;
+            animation: rotateCCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ef9b42a8;
+        }
+
+        /* 设置滚动条 */
+        ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+
+        .images img {
+            border: #fff solid 10px;
+            max-width: 45vh;
+            max-height: 50vh;
+            transition: .5s;
+        }
+
+        .images:hover img {
+            box-shadow: 0 10px 30px #86c4f7;
+            transform: scale(1.05);
+        }
+
+        /* 创建一个水平滚动的包裹容器，用于展示内容 */
+        .shell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100vh;
+            /*旋转90度，向上平移一个视口高度的距离 */
+            transform: rotate(-90deg) translate3d(0, -100vh, 0);
+            /* 设置变换的原点为右上角 */
+            transform-origin: right top;
+            overflow-x: hidden;
+            height: 100vw;
+            /* 设置3D透视效果 */
+            perspective: 1px;
+            transform-style: preserve-3d;
+        }
+
+        /* 创建一个图片容器，用于展示图片 */
+        .images {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* 设置最小高度为视口高度的40% */
+            min-height: 40vh;
+            /* 设置变换的原点为中心点 */
+            transform-origin: 50% 50%;
+            /* 旋转90度，向前平移0.1px，放大1.1倍，向右平移0px，向下平移2vh */
+            transform: rotate(90deg) translateZ(.1px) scale(1.1) translateX(0px) translateY(2vh);
+            transition: 1s;
+            cursor: pointer;
+        }
+
+        .slower {
+            transform: rotate(90deg) translateZ(-.12px) scale(1.3) translateX(0%) translateY(-8vh);
+        }
+
+        .slower1 {
+            transform: rotate(90deg) translateZ(-.25px) scale(1.35) translateX(0%) translateY(2vh);
+        }
+
+        .slower-down {
+            transform: rotate(90deg) translateZ(-.1px) scale(1) translateX(0%) translateY(16vh);
+        }
+
+        .faster {
+            transform: rotate(90deg) translateZ(-.05px) scale(1.1) translateX(0%) translateY(15vh);
+        }
+
+        .faster1 {
+            transform: rotate(90deg) translateZ(.05px) scale(1.4) translateX(0%) translateY(10vh);
+        }
+
+        .fastest {
+            transform: rotate(90deg) translateZ(.22px) scale(0.7) translateX(-10vh) translateY(-15vh);
+        }
+
+        .vertical {
+            transform: rotate(90deg) translateZ(-.1px) scale(1.6) translateX(0%) translateY(-3vh);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .left-button:hover {
+        background-color: #70764a; /* 鼠标悬停时的背景颜色 */
+    }
+    .left-button {
+        display: flex;
+        /* justify-content: flex-end; */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 文字大小 */
+        color: rgb(255, 255, 255); /* 文字颜色 */
+        background-color: #d2b260; /* 背景颜色 */
+        border: none; /* 无边框 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        transition: background-color 0.3s; /* 背景颜色渐变效果 */
+    }
+    footer {
+        background-color: #6193b1;
+        color: #ffffff;
+        text-align: center;
+        padding: 25px 0;
+        position: fixed;
+        background-image: url('../image/below.jpg');
+        background-size: 100%;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="left-button" id="index">我的个人页面</button>
+
+        <h1 class="transparent-header"style="opacity: 0.5;">请点击图片以翻阅对应的pdf文档捏。。。</h1>
+
+    </header>
+    <div class="shell">
+        <!-- 确保所有图片容器都有 trigger-btn 类 -->
+        <div class="images slower trigger-btn" data-pdf="../coding/IT中国结课感悟.pdf">
+            <img src="../image/001.gif" width="200" height="200">
+            <div class="card">
+                <h5>IT中国结课感悟</h5>
+            </div>
+        </div>
+
+        <div class="images faster trigger-btn" data-pdf="../coding/assert断言.pdf">
+            <img src="../image/002.gif" width="200" height="200">
+            <div class="card">
+                <h5>assert断言</h5>
+            </div>
+        </div>
+
+        <div class="images vertical trigger-btn" data-pdf="../coding/bubble sort.pdf">
+            <img src="../image/003.png"width="150" height="150">
+            <div class="card">
+                <h5>bubble sort</h5>
+            </div>
+        </div>
+
+        <div class="images faster1 trigger-btn" data-pdf="../coding/do while循环.pdf">
+            <img src="../image/004.jpg"width="140" height="140">
+            <div class="card">
+                <h5>do while循环</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <embed id="pdf-embed" src="" type="application/pdf" width="100%" height="600px" />
+        </div>
+    </div>
+
+    <script>
+        // 获取模态窗口元素
+        var modal = document.getElementById("myModal");
+        // 获取PDF嵌入元素
+        var pdfEmbed = document.getElementById("pdf-embed");
+        // 获取所有打开模态窗口的图片元素
+        var btns = document.querySelectorAll(".trigger-btn");
+
+        btns.forEach(function(btn) {
+            btn.onclick = function() {
+                // 设置PDF嵌入元素的src属性为对应的PDF文件路径
+                pdfEmbed.src = btn.getAttribute("data-pdf");
+                modal.style.display = "block";
+            }
+        });
+
+        // 获取关闭按钮元素
+        var spans = document.getElementsByClassName("close")[0];
+        
+        // 点击关闭按钮关闭模态窗口
+        spans.onclick = function() {
+            modal.style.display = "none";
+        };
+        
+        // 点击模态窗口外部区域关闭模态窗口
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <footer>
+        <p>2024/11/29</p>
+    </footer>
+</body>
+<script>
+    // 获取按钮元素
+    var button = document.getElementById('index');
+    // 为按钮添加点击事件监听器
+    button.addEventListener('click', function() {window.location.href = '../index.html';});
+</script>
+
+</html>

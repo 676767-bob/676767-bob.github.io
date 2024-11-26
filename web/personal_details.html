@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body {font-family: Arial, sans-serif;
+            background-image: url('../image/bjdet.gif');
+            background-repeat: no-repeat; 
+            background-size: 160%;
+            background-position: center center;
+            
+        }
+        /* //header */
+    header {
+        background-color: #98bcd2;
+        color: #2f3c46;
+        padding: 10px 0;
+        text-align: center;
+        opacity: 0.9;
+    }
+    .transparent-header {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+    }
+    /* image */
+    .center-image-flex {
+    display: flex;
+    justify-content:center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 400px; /* 定义容器的高度 */
+    }
+
+    .circular-image {
+    border-radius: 50%; /* 设置为50%使图片变为圆形 */
+    width: 150px; /* 设置图片宽度 */
+    height: 150px; /* 设置图片高度，保持宽高比 */
+    object-fit: cover; /* 保持图片内容的覆盖 */
+    margin-top: 50px;
+    }
+
+    /* button */
+    .left-button:hover {
+        background-color: #9ca36c; /* 鼠标悬停时的背景颜色 */
+    }
+    .left-button {
+        display: flex;
+        /* justify-content: flex-end; */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 文字大小 */
+        color: rgb(255, 255, 255); /* 文字颜色 */
+        background-color: #d2b260; /* 背景颜色 */
+        border: none; /* 无边框 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        transition: background-color 0.3s; /* 背景颜色渐变效果 */
+}
+
+footer {
+        background-color: #6193b1;
+        color: #ffffff;
+        text-align: center;
+        padding: 20px 0;
+        position: fixed;
+        background-image: url('../image/below.jpg');
+        background-size: 100%;
+        bottom: 0;
+        width: 100%;
+    }
+
+        /* 定义全局变量 */
+        :root {
+            --rotate-speed: 15;
+            --count: 8;
+            --easing: cubic-bezier(0.000, 0.37, 1.000, 0.63);
+        }
+
+        /* 设置页面样式 */
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #d5f5f5a8;
+    }
+
+        /* 设置容器样式 */
+        .void {
+            width: 100%;
+            max-width: 1024px;
+            margin: auto;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            margin-top: 20px;
+        }
+
+        /* 鼠标悬停时暂停动画 */ 
+        ul:hover * {
+            animation-duration: 200;
+        }
+
+        /* 设置列表样式 */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            z-index: 1;
+        }
+
+        /* 设置列表项样式 */
+        li {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 110%;
+            animation: rotateCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+        }
+
+        /* 设置卡片样式 */
+        .card {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 50px 24px;
+            gap: 8px;
+            background: #b8d6ec;
+            box-shadow: #4779af 0px 18px 36px -18px;
+            border-radius: 12px;
+            font: 400 14px '';
+            color: #535062;
+            animation: rotateCCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+        }
+
+        /* 设置图片样式 */
+        .card img {
+            width: 120%;
+        }
+
+        /* 设置链接样式 */
+        a {
+            text-decoration: none;
+            color: unset;
+            display: block;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        /* 设置模型名称样式 */
+        .model-name {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 150%;
+            color: #3B2ED0;
+            display: block;
+        }
+
+        /* 设置SVG样式 */
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* 设置不同列表项的动画延迟 */
+        li:nth-child(1),
+        li:nth-child(1) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -1s);
+        }
+
+        li:nth-child(2),
+        li:nth-child(2) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -3s);
+        }
+
+        li:nth-child(3),
+        li:nth-child(3) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -5s);
+        }
+
+        /* 定义顺时针旋转动画 */
+        @keyframes rotateCW {
+            from {
+                transform: translate3d(0px, -50%, -1px) rotate(-45deg);
+            }
+
+            to {
+                transform: translate3d(0px, -50%, 0px) rotate(-315deg);
+            }
+        }
+
+        /* 定义逆时针旋转动画 */
+        @keyframes rotateCCW {
+            from {
+                transform: rotate(45deg);
+            }
+
+            to {
+                transform: rotate(315deg);
+            }
+        }
+
+        /* 设置中心圆样式 */
+        .center-circle {
+            position: absolute;
+            width: 230px;
+            aspect-ratio: 1 / 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #FFFFFF;
+            box-shadow: 0px 18px 36px -18px rgba(188, 189, 140, 0.3),
+                0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -35px 0;
+        }
+
+        /* 设置第二个圆样式 */
+        .second-circle {
+            position: absolute;
+            width: 40%;
+            aspect-ratio: 1 / 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #F5F4FE;
+            opacity: 0.5;
+            box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3),
+                0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+            border-radius: 50%;
+            background-image: url(./03.gif);
+        }
+
+        /* 设置最后一个圆样式 */
+        .last-circle {
+            position: absolute;
+            width: 66%;
+            aspect-ratio: 1 / 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #F5F4FE;
+            opacity: 0.25;
+            box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+            border-radius: 50%;
+            background-image: url(./03.gif);
+        }
+
+        /* 设置裁剪样式 */
+        .crop {
+            mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1));
+        }
+
+        /* 设置遮罩样式后的效果 */
+        .mask:after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            right: 0;
+            display: block;
+            background-image: linear-gradient(180deg, rgba(60, 26, 229, 0) 0%,#527b9f 50%,
+            rgba(60, 26, 229, 0) 100%); 
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="left-button" id="index">我的个人主页</button>
+
+        <h1 class="transparent-header"style="opacity: 1;">关于Bob</h1>
+        <p class="italic-text">好运掌握在自己手中，为美好的明天而战</p>
+    </header>
+    <div class="void" id="void">
+        
+        <div class="crop">
+            <ul class="card-list" style="--count:6;">
+                <li>
+                    <div class="card"><a href="">
+                            <h3>游戏<img src ="../image/game.gif" width="50" height="60"></h3>
+                        </a></div>
+                </li>
+
+                <li>
+                    <div class="card"><a href="">
+                            <h3>学习<img src ="../image/study.jpg" width="40" height="40"></h3>
+                        </a></div>
+                </li>
+
+                <li>
+                    <div class="card"><a href="">
+                        <h3>编程<img src ="../image/code.jpg" width="40" height="40"></h3>
+                        </a></div>
+                </li>
+
+            </ul>
+            <div class="last-circle"></div>
+            <div class="second-circle"></div>
+
+        </div>
+        <div class="mask"></div>
+        <div class="center-circle"><img src ="../image/details.gif" width="50" height="60" margin: 0; class ="circular-image" style="position:absolute; top: -10px;left: 40px;z-index: 1;justify-content: center;align-items: center;"></div>
+    </div>
+
+    
+    <footer>
+        <p>2024/11/29</p>
+    </footer>
+
+</body>
+
+<script>
+    // 获取按钮元素
+    var button = document.getElementById('index');
+    // 为按钮添加点击事件监听器
+    button.addEventListener('click', function() {window.location.href = '../index.html';});
+</script>
+
+</html>
