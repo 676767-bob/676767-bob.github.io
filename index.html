@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人网站</title>
+    <link rel="stylesheet" href="iconfont.css">
+    <style>
+    body {font-family: Arial, sans-serif;
+            background-image: url('image/send.gif');
+            background-repeat: no-repeat; 
+            background-size: cover;
+            background-position: center center;
+            
+        }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #aeada5a8;
+    }
+    
+    header {
+        background-color: rgb(152, 188, 210 , 0.9);
+        color: #2f3c46;
+        padding: 10px 0;
+        text-align: center;
+        opacity: 0.9;
+    }
+    .transparent-header {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+    }
+    
+    .iconfont {
+            font-size: 20px;
+        }
+
+        .menu {
+            position: absolute;
+            width: 60px;
+            height: 500px;
+            background-color: rgb(95, 117, 160,0.9);
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            right: 0px;
+            margin: auto;
+            border-radius: 0.8rem;
+            transition: 0.3s ease 0.15s;
+            font-family: sans-serif;
+        }
+
+        .menu a {
+            text-decoration: none;
+        }
+
+        .menu .actionsBar {
+            width: 100%;
+            height: 10%;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+
+        .menu .actionsBar div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 0.5rem;
+            transition: 0.3s ease;
+        }
+
+        .menu .actionsBar div button {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            border-radius: 0.5rem;
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            transition: 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .menu .actionsBar div button:hover {
+            background-color: #52637d;
+        }
+
+        .menu .actionsBar div h3 {
+            width: calc(100% - 45px);
+            text-align: center;
+        }
+
+        .menu .optionsBar {
+            overflow: hidden;
+            display: flex;
+            width: 100%;
+            height: 60%;
+            padding: 0 0.5rem;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .menu .optionsBar .menuItem {
+            width: 100%;
+            height: 45px;
+            margin: 0.3rem;
+        }
+
+        .menu .optionsBar .menuItem .menuOption {
+            font-size: 1rem;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 0.5rem;
+            transition: 0.3s ease;
+        }
+
+        .menu .optionsBar .menuItem .menuOption:hover {
+            background-color: #364152;
+        }
+
+        .menu .optionsBar .menuItem .menuOption i {
+            width: 100px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .menu .optionsBar .menuItem .menuOption h5 {
+            width: calc(100% - 45px);
+        }
+
+        .menuText {
+            color: rgba(255, 255, 255, 0.8);
+            transform: translateX(-250px);
+            opacity: 0;
+            transition: transform 0.3s ease 0.1s;
+        }
+
+        .menu .about {
+            width: 80%;
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 1rem;
+            flex-direction: column;
+            font-family: sans-serif;
+            opacity: 0;
+            white-space: nowrap;
+            transition: 0.3s ease 0.15s;
+        }
+
+        .menu.open {
+            width: 200px;
+        }
+
+        .menuText.open2 {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .menu .menuBreak {
+            width: 100%;
+            height: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu .menuBreak hr {
+            width: 70%;
+            height: 3px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .menu .themeBar {
+            overflow: hidden;
+            width: 100%;
+            height: 10%;
+            padding: 0.5rem;
+        }
+
+        .menu .themeBar div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 0.5rem;
+            transition: 0.3s ease;
+        }
+
+        .menu .themeBar div button {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            border-radius: 0.5rem;
+            color: #fff;
+            width: 100%;
+            height: 500px;
+            transition: 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .menu .themeBar div button:hover {
+            background-color: #364152;
+        }
+
+        .menu .menuUser {
+            width: 100%;
+            height: 10%;
+        }
+
+        .menu .menuUser a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            padding: 0.5rem;
+            position: relative;
+        }
+
+        .menu .menuUser a div {
+            width: 45px;
+            height: 45px;
+            position: relative;
+            border-radius: 0.5rem;
+        }
+
+        .menu .menuUser a div img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .menu .menuUser a .Username {
+            width: calc(70% - 45px);
+        }
+
+        .menu .menuUser a p {
+            width: calc(30% - 45px);
+        }
+
+        .menu .menuUser a:hover p {
+            animation: animArrow 0.3s ease 2;
+        }
+
+        @keyframes animArrow {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .menu .menuUser .userInfo {
+            position: absolute;
+            width: 20rem;
+            height: 18rem;
+            opacity: 0;
+            pointer-events: none;
+            top: 34%;
+            left: 1.5rem;
+            transition: 0.3s ease;
+            transform: scale(0);
+            transform-origin: bottom left;
+        }
+
+        .menu .menuUser:hover .userInfo {
+            pointer-events: all;
+            opacity: 1;
+            transform: scale(1);
+        }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+    }
+    
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    section {
+        padding: 20px;
+        margin: 10px;
+        background-color: #87bbdbc7;
+        color: #223342
+        
+    }
+    
+    footer {
+        background-color: #6193b1;
+        color: #ffffff;
+        text-align: center;
+        padding: 20px 0;
+        position: fixed;
+        background-image: url('image/below.jpg');
+        background-size: 100%;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .center-image-flex {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 400px; /* 定义容器的高度 */
+    }
+
+    .circular-image {
+    border-radius: 50%; /* 设置为50%使图片变为圆形 */
+    width: 150px; /* 设置图片宽度 */
+    height: 150px; /* 设置图片高度，保持宽高比 */
+    object-fit: cover; /* 保持图片内容的覆盖 */
+    margin-top: 50px;
+    }
+
+    .stylish-button {
+        
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 文字大小 */
+        color: rgb(251, 255, 237); /* 文字颜色 */
+        background-color: #5faf47; /* 背景颜色 */
+        border: none; /* 无边框 */
+        border-radius: 10px; /* 圆角边框 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        transition: background-color 0.3s; /* 背景颜色渐变效果 */
+    }
+
+        /* 鼠标悬停时的样式 */
+    .stylish-button:hover {
+        background-color: #6b6e55; /* 鼠标悬停时的背景颜色 */
+    }
+
+    .italic-text {
+    font-style: italic; /* 设置字体为斜体 */
+}
+    .left-button:hover {
+        background-color: #9ca36c; /* 鼠标悬停时的背景颜色 */
+    }
+    .left-button {
+        display: flex;
+        /* justify-content: flex-end; */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 文字大小 */
+        color: rgb(255, 255, 255); /* 文字颜色 */
+        background-color: #d2b260; /* 背景颜色 */
+        border: none; /* 无边框 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        transition: background-color 0.3s; /* 背景颜色渐变效果 */
+}
+
+    .container 
+    {
+        column-count: 4;
+        column-gap: 1em;
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto 20px;
+        padding: 0 20px;
+        position: relative;
+    }
+    </style>
+</head>
+<script>
+    function hello(){
+        alert("你已经发送成功了捏")
+        document.getElementById("myInput").value = "";
+}
+function zan(){
+    alert("好的收到了谢谢捏")
+}
+function cai(){
+    alert("给我点赞！！！")
+}
+</script>
+<body>
+    <header>
+        <button class="left-button" id="roommates">我的寝室</button>
+        <img src="image/logo.jpg" alt="logo" width="100" height="100" 
+            class="circular-image" class="center-image-flex">
+        <h1 class="transparent-header"style="opacity: 1;">Bob的个人主页</h1>
+        <p class="italic-text">好运掌握在自己手中，为美好的明天而战</p>
+    </header>
+    <nav class="menu">
+        <div class="actionsBar">
+            <div>
+                <button id="menuBtn" type="button">
+                    <i class="iconfont icon-hanbaocaidan"></i>
+                </button>
+                <h3 class="menuText">about Bob</h3>
+            </div>
+        </div>
+        <ul class="optionsBar">
+            <li class="menuBreak">
+                <hr>
+            </li>
+            <li class="menuItem">
+                <button class="menuOption" type="button" id="details">
+                    <i><img src ="image/1.jpg" alt="logo" width="50" height="50"></i>
+                    <h5 class="menuText">个人信息</h5>
+                </button>
+            </li>
+
+            <li class="menuItem">
+                <button class="menuOption" type="button" id="paintings">
+                    <i><img src ="image/2.jpg" alt="logo" width="50" height="50"></i>
+                    <h5 class="menuText">我的家乡</h5>
+                </button>
+            </li>
+
+            <li class="menuItem">
+                <button class="menuOption" type="button" id="resources">
+                    <i><img src ="image/3.jpg" alt="logo" width="50" height="50"></i>
+                    <h5 class="menuText">我的推荐</h5>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>关于我</h2>
+        <p class="italic-text">向天晨，就读于华中科技大学计算机与技术学院2410班.</p>
+        <p class="italic-text">You can call me Bob or what something else if you like.</p>
+        <button class="stylish-button" id="details1">关于Bob的更多</button>
+    </section>
+
+    <section id="portfolio">
+        <h2>我的家乡</h2>
+        <p class="italic-text">这里是我对我的家乡的一些介绍。</p>
+        <button class="stylish-button" id="paintings1">查看更多</button>
+    </section>
+
+    <section id="portfolio">
+        <h2>我的推荐</h2>
+        <p class="italic-text">这里是我推荐的一些网站或资源，包括学习和日常生活。</p>
+        <button class="stylish-button" id="resources1">查看更多</button>
+    </section>
+
+
+    <section id="portfolio">
+        <h2>我的心得</h2>
+        <p class="italic-text">这里是我成为huster以来的一些心得。</p>
+        <button class="stylish-button" id="cod">查看更多</button>
+    </section>
+
+
+    <section id="contact">
+        <h2>联系方式</h2>
+        <p>QQmail : 166610385@qq.com</p>
+        <p>现在有什么想说的话可以匿名发送给我的捏:</p>
+        <p><input type="text" id="myInput"> &nbsp;&nbsp;<button onclick="hello()">发送</button></p>
+    </section>
+
+    <section id="contact">
+        <h2>友情链接</h2>
+        <button class="stylish-button" id="roommates1">我的寝室主页</button>
+    </section>
+
+    <section id="contact" style="margin: 100px;">
+        <h2>See you next time!</h2>
+        <p>麻烦给个赞吧。。。。<button onclick="zan()">赞</button> <button onclick="cai()">踩</button></p>
+    </section>
+
+    <footer>
+        <p>2024/11/29</p>
+    </footer>
+
+    <script>
+        // 获取按钮元素
+        var button = document.getElementById('details');
+        // 为按钮添加点击事件监听器
+        button.addEventListener('click', function() {window.location.href = 'web/personal_details.html';});
+    </script>
+    <script>
+        // 获取按钮元素
+        var button = document.getElementById('paintings');
+        // 为按钮添加点击事件监听器
+        button.addEventListener('click', function() {window.location.href = 'web/personal_hometown.html';});
+        </script>
+    <script>
+        // 获取按钮元素
+        var button = document.getElementById('resources');
+        // 为按钮添加点击事件监听器
+        button.addEventListener('click', function() {window.location.href = 'web/personal_resources.html';});
+    </script>
+        <script>
+            // 获取按钮元素
+            var button = document.getElementById('details1');
+            // 为按钮添加点击事件监听器
+            button.addEventListener('click', function() {window.location.href = 'web/personal_details.html';});
+        </script>
+        <script>
+            // 获取按钮元素
+            var button = document.getElementById('paintings1');
+            // 为按钮添加点击事件监听器
+            button.addEventListener('click', function() {window.location.href = 'web/personal_hometown.html';});
+            </script>
+        <script>
+            // 获取按钮元素
+            var button = document.getElementById('resources1');
+            // 为按钮添加点击事件监听器
+            button.addEventListener('click', function() {window.location.href = 'web/personal_resources.html';});
+        </script>
+        <script>
+            // 获取按钮元素
+            var button = document.getElementById('cod');
+            // 为按钮添加点击事件监听器
+            button.addEventListener('click', function() {window.location.href = 'web/personal_coding.html';});
+        </script>
+        <script>
+            // 获取按钮元素
+            var button = document.getElementById('roommates');
+            // 为按钮添加点击事件监听器
+            button.addEventListener('click', function() {window.location.href = 'https://godxin666.github.io/roomindex/';});
+        </script>
+        <script>
+            // 获取按钮元素
+            var button = document.getElementById('roommates1');
+            // 为按钮添加点击事件监听器
+            button.addEventListener('click', function() {window.location.href = 'https://godxin666.github.io/roomindex/';});
+        </script>
+        
+
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.querySelector('.menu');
+    const menuText = document.querySelectorAll('.menuText');
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        menuText.forEach(function (text, index) {
+            setTimeout(() => {
+                text.classList.toggle('open2');
+            }, index * 100);
+        });
+    });
+    
+</script>
+
+var button = document.getElementById('class');
+
+var button = document.getElementById('myButton');
+</body>
+</html>
