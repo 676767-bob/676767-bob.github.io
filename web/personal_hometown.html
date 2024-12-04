@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hometown</title>
+    <style>
+
+body {
+        font-family: Arial, sans-serif;
+        background-image: url('../image/hometown.gif');
+        background-size: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f7e1a8;
+    }
+    header {
+        background-color: #98bcd2;
+        color: #2f3c46;
+        padding: 10px 0;
+        text-align: center;
+        opacity: 0.9;
+    }
+    .transparent-header {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+    }
+
+    .left-button:hover {
+        background-color: rgb(152, 188, 210 , 0.9); /* 鼠标悬停时的背景颜色 */
+    }
+    .left-button {
+        display: flex;
+        /* justify-content: flex-end; */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 文字大小 */
+        color: rgb(255, 255, 255); /* 文字颜色 */
+        background-color: #d2b260;; /* 背景颜色 */
+        border: none; /* 无边框 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        transition: background-color 0.3s; /* 背景颜色渐变效果 */
+}
+.center-image-flex {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 400px; /* 定义容器的高度 */
+    }
+
+    .circular-image {
+    border-radius: 50%; /* 设置为50%使图片变为圆形 */
+    width: 150px; /* 设置图片宽度 */
+    height: 150px; /* 设置图片高度，保持宽高比 */
+    object-fit: cover; /* 保持图片内容的覆盖 */
+    margin-top: 50px;
+    }
+
+        .container {
+            column-count: 4;
+            column-gap: 1em;
+            width: 100%;
+            max-width: 1200px;
+            margin: 50px auto 60px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .image-item {
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 1em;
+            break-inside: avoid;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fallDown 20s linear infinite;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+        background-color: #6193b1;
+        color: #ffffff;
+        text-align: center;
+        padding: 20px 0;
+        position: fixed;
+        background-image: url('../image/below.jpg');
+        background-size: 100%;
+        bottom: 0;
+        width: 100%;
+    }
+
+
+        .image-item {
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 1em;
+            break-inside: avoid;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 1s ease;
+            animation: fallDown 40s linear infinite;
+            opacity: 1;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 1200px) {
+            .container {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                column-count: 1;
+            }
+        }
+        .gallery {  
+    display: flex;  
+    flex-wrap: wrap;  
+    gap: 10px;  
+}  
+
+.thumbnail {  
+    width: 200px;  
+    cursor: pointer;  
+    transition: transform 0.2s;  
+}  
+
+.thumbnail:hover {  
+    transform: scale(1.05);  
+}  
+
+.lightbox {  
+    display: none; /* 默认为隐藏 */  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    width: 100%;  
+    height: 100%;  
+    background-color: rgba(0, 0, 0, 0.8);  
+    justify-content: center;  
+    align-items: center;
+    z-index: 2;
+}  
+
+.lightbox-content {  
+    max-width: 90%;  
+    max-height: 90%;  
+}  
+
+.close {  
+    position: absolute;  
+    top: 20px;  
+    right: 30px;  
+    color: white;  
+    font-size: 40px;  
+    font-weight: bold;  
+    cursor: pointer;  
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <button class="left-button" id="index">我的个人主页</button>
+        
+        <img src="../image/logo.jpg" alt="logo" width="100" height="100" 
+            class="circular-image" class="center-image-flex">
+        <h1 class="transparent-header"style="opacity: 1;">hometown (武汉)</h1>
+        <p style="font-size: 150%; font-weight: 900;">点击图片以放大查看</p>
+    </header>
+
+
+    <div class="container">
+        <audio id="background-music" autoplay loop controls>  
+            <source src="../image/hometown.mp3" type="audio/mpeg">
+            您的浏览器不支持音频元素。
+        </audio>
+        <!-- 图片容器，实际使用时需要替换为具体的图片路径 -->
+        <div class="image-item"><img src="../image/00001.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00002.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00003.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00004.jpg" alt="Image 3" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00005.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00006.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00007.jpg" alt="Image 3" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00008.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00009.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00010.jpg" alt="Image 3" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00011.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00012.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00013.jpg" alt="Image 3" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00014.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00015.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00016.jpg" alt="Image 3" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00017.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00018.jpg" alt="Image 1" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00019.jpg" alt="Image 2" class="thumbnail" onclick="openLightbox(this)"></div>
+        <div class="image-item"><img src="../image/00020.jpg" alt="Image 3" class="thumbnail" onclick="openLightbox(this)"></div>
+        
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">  
+            <span class="close" onclick="closeLightbox()">&times;</span>  
+            <img class="lightbox-content" id="lightboxImg">  
+        </div>
+    </div>
+    <footer>
+        <p>2024/11/29</p>
+    </footer>
+</body>
+
+<script>
+    // 获取按钮元素
+    var button = document.getElementById('index');
+    // 为按钮添加点击事件监听器
+    button.addEventListener('click', function() {window.location.href = '../index.html';});
+
+    function openLightbox(element) {  
+    const lightbox = document.getElementById("lightbox");  
+    const lightboxImg = document.getElementById("lightboxImg");  
+    
+    lightbox.style.display = "flex"; // 显示灯箱  
+    lightboxImg.src = element.src; // 设置灯箱图片为被点击的图片  
+}  
+
+function closeLightbox() {  
+    const lightbox = document.getElementById("lightbox");  
+    lightbox.style.display = "none"; // 隐藏灯箱  
+}  
+</script>
+
+</html>
